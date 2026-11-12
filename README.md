@@ -1,5 +1,4 @@
 # AWS EKS – New Application Deployment | Practical DevOps Guide
-![AWS EKS Application Deployment Architecture](assets/eks-deployment-architecture.svg)
 A GitHub-ready, beginner-friendly reference project demonstrating how to containerize a small web application, publish it to Amazon ECR, deploy it to Amazon EKS, expose it through Kubernetes Service and (optionally) AWS Application Load Balancer, validate it, and roll it back.
 
 > **Learning/demo repository:** This is a reference implementation, not a production-certified deployment. Adapt IAM, networking, image scanning, secrets, resource sizing, probes, admission controls, and change-management requirements to your organization.

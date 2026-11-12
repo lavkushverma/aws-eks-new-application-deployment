@@ -1,0 +1,25 @@
+# OPTIONAL: requires AWS Load Balancer Controller and approved AWS networking.
+# Replace the hostname and certificate ARN. Confirm internal vs internet-facing with your cloud team.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: eks-demo-app
+  namespace: eks-demo
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: "<ACM_CERTIFICATE_ARN>"
+spec:
+  ingressClassName: alb
+  rules:
+    - host: demo.example.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: eks-demo-app
+                port:
+                  number: 80
